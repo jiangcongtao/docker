@@ -1,4 +1,7 @@
-# file: DockerfileOfUnbuntu15_04WithNettoolsPython27Jdk
+# File: DockerfileOfUnbuntu15_04WithNettoolsPython27Jdk
+# Author: Jiang Congtao <jiangcongtao@gmail.com>
+# Date: 2016-03-20
+#
 # Build a docker image with tomcat service running
 # 
 # Run using command:
@@ -28,4 +31,8 @@ ENV JAVA_HOME /usr/local/java
 ENV TOMCAT_HOME /usr/local/tomcat
 ENV PATH $PATH:$JAVA_HOME/bin
 
-ENTRYPOINT $TOMCAT_HOME/bin/startup.sh && /bin/bash -c "while(true) do sleep 1; done"
+# ENTRYPOINT instruction is not overrideable by docker run commandline
+#ENTRYPOINT $TOMCAT_HOME/bin/startup.sh && /bin/bash -c "while(true) do sleep 1; done"
+
+# CMD instruction is overrideable by docker run commandline
+CMD $TOMCAT_HOME/bin/startup.sh && /bin/bash -c "while(true) do sleep 1; done"
