@@ -16,7 +16,7 @@ MAINTAINER Congtao.Jiang "jiangcongtao@gmail.com"
 #ENV HTTP_PROXY <http://host:port>
 #ENV HTTPS_PROXY <http://host:port>
 
-# retreive tomcat package on the fly during building image
+# retrieve tomcat package on the fly during building image
 ADD http://mirrors.hust.edu.cn/apache/tomcat/tomcat-8/v8.0.32/bin/apache-tomcat-8.0.32.tar.gz /tmp/
 
 #jdk-xxx.tar.gz package is assumed to be present at the same directory as this Dockerfile
