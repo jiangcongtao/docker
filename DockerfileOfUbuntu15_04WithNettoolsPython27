@@ -1,0 +1,29 @@
+# File: DockerfileOfUnbuntu15_04WithNettoolsPython27
+# Author: Jiang Congtao <jiangcongtao@gmail.com>
+# Date: 2016-03-20
+
+FROM ubuntu:15.10
+MAINTAINER Congtao.Jiang "jiangcongtao@gmail.com"
+
+# Specify proxy configuration if run docker build behind corporate firewall
+#ENV HTTP_PROXY <http://host:port>
+#ENV HTTPS_PROXY <http://host:port>
+
+RUN apt-get update && apt-get -y install \
+	apt-utils \
+	net-tools \
+	iputils-ping \
+	iperf \
+	curl \
+	wget \
+	netcat \
+	manpages \
+	man-db \
+	nano \
+	vim-tiny \
+	python \
+	python2.7 \
+	python2.7-doc \
+	python2.7-examples && \
+	apt-get clean
+CMD /bin/bash
