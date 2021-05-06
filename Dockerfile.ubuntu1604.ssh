@@ -1,0 +1,17 @@
+FROM ubuntu:16.04
+ARG DEBIAN_FRONTEND=noninteractive
+
+RUN dpkg-divert --local --rename --add /sbin/initctl \
+    && ln -sf /bin/true /sbin/initctl \
+    && apt-get update && apt-get -y upgrade \ 
+    && apt-get -y install \
+    wget tmux screen \
+    make git \
+    sudo curl less vim tree openssh-server \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*\
+    && mkdir -p /var/run/sshd \
+    && useradd -G sudo --create-home --shell /bin/bash --user-group nick \
+    && echo "nick:nick" | chpasswd 
+
+CMD ["/usr/sbin/sshd", "-D"]
+EXPOSE 22
